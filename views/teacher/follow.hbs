@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		{{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
+		<script src="https://kit.fontawesome.com/94883f0d72.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+	  		<h1><a href="index.html" class="logo">Project Name</a></h1>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+          
+            <a href="#"><span class="fas fa-chart-pie mr-3 "></span> Home</a>
+          </li>
+          <li>
+              <a href=""><span class="fas fa-school mr-3"></span>Attendance</a>
+          </li>
+          <li>
+              <a href=""><span class="fas fa-school mr-3"></span>Attendance for students</a>
+          </li>
+          <li>
+              <a href="/message/class"><span class="fas fa-school mr-3"></span>Chat</a>
+          </li>
+          <li>
+              <a href=""><span class="fas fa-school mr-3"></span>Plans</a>
+          </li>
+          <li>
+              <a href=""><span class="fas fa-school mr-3"></span>Slary</a>
+          </li>
+          
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5"> 
+     <form action="/information/doinfor" method="POST">
+
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col" >Student Name</th>
+                <th scope="col" style="text-align: center;">Weight</th>
+                <th scope="col" style="text-align: center;">Height</th>
+                <th scope="col" style="text-align: center;">Food</th>
+                <th   style="text-align: center;">Health</th>
+                <th   style="text-align: center;">Details</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+                {{#each data}}
+
+              <tr>
+
+                <td><input type="text" name="studentName" value="{{studentName}}" readonly ></td>
+                <td>
+                  <input  type="text" name="Weight"   style="width: 70px;"/>
+                </td>
+                <td>
+                  <input  type="text" name="Height" style="width: 70px;"/>
+               
+                <td>
+                  <a href="">View menu</a>
+                </td>
+                <td>
+                  <input  type="checkbox" name="Health" class="input1" data="Good"  value="Good"/>Good
+                    <br>
+                  <input  type="checkbox" name="Health" class="input2" data="Problem" value="Problem" />Problem
+
+                </td>
+                <td>
+                  <input  type="text" name="Details"  style="width: 250px;"/>
+                  <input  type="text" name="studentID" value="{{studentID}}" style="width: 250px;" hidden/>
+               
+                <td>
+             
+              </tr>
+                {{/each}}
+
+            </tbody>
+          </table>
+        <button  id="btnSubmit" type="submit" class="btn btn-primary mr-1" >Submit</button>
+        
+        </form>
+        <script>
+          var a = document.getElementsByClassName('input1')            
+                    for(var i = 0; i<a.length; ++i){
+                          if(a[i].checked == false){
+                            if(a[i].getAttribute("data") == "Attended"){
+                      
+                                    a[i].checked = true;
+                            }
+                            
+                          }
+                                  
+                    }
+                    var b = document.getElementsByClassName('input2')
+                
+                      
+
+                    for(var i = 0; i<b.length; ++i){
+                          if(b[i].checked == false){
+                            if(b[i].getAttribute("data") == "Absent"){
+                                    b[i].checked = true;
+                            }
+                            
+                          }
+                                  
+                    }
+                    /////////////
+                    var checks = document.getElementsByName('Health');
+
+        checks.forEach(function(check){
+          check.addEventListener('click', checkIndex);
+        })
+
+
+        function checkIndex(event){
+ 
+      var b = document.getElementsByName('Health');
+
+
+          let Good = Array.from(checks).indexOf(event.target) ;
+          let Problem = Array.from(checks).indexOf(event.target) ;
+console.log(Good)
+      
+          
+          if( Good % 2 == 0){
+     
+               b[Good + 1].checked = false;
+               b[Good].checked = true
+
+          }else{
+               b[Good - 1].checked = false;
+               b[Good].checked = true
+
+          }
+          
+        }
+          
+        
+
+        </script>
+		</div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

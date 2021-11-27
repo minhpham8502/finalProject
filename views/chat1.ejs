@@ -1,0 +1,175 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		
+		<script src="https://kit.fontawesome.com/94883f0d72.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/chat.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  
+    <script>
+              var socket = io();
+              socket.emit("new_user_message", {
+                  cookiesemail: "<%=cookiesemail.email%>",
+                  user: "<%=user.email%>"
+              })
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.checkbtn').click(function(){
+          $('ul').toggleClass('show');
+        });
+      });
+    </script>
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+	  		<h1><a href="index.html" class="logo">Project Name</a></h1>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+          
+            <a href="#"><span class="fas fa-chart-pie mr-3 "></span> Home</a>
+          </li>
+          <li>
+              <a href="/teacher/CreateAttendance"><span class="fas fa-school mr-3"></span>Attendance</a>
+          </li>
+          <li>
+              <a href=""><span class="fas fa-school mr-3"></span>Attendance for students</a>
+          </li>
+          <li>
+              <a href="/message/class"><span class="fas fa-school mr-3"></span>Chat</a>
+          </li>
+          <li>
+              <a href=""><span class="fas fa-school mr-3"></span>Plans</a>
+          </li>
+          <li>
+              <a href="/information/class"><span class="fas fa-school mr-3"></span>Slary</a>
+          </li>
+              
+          
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5"> 
+        <div class="content" style="margin-top: -9px; width: 100%;">
+            <!-- <div class="col-md-6">  -->
+                <div class="card " style="box-shadow: #7f7f7f; margin: 0 auto auto auto; width: 80%;
+                height: 95%;">
+                    <!--Header : infomation of user receive-->
+                    <div class="card-header" style=" width: 100%" >
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                
+                                <div class="ml-2">
+                                    <!--  -->
+                                    <div class="h7 text-muted"><%=user.email%></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--Body : show chats-->
+                    <div class="card-body messages-box" id="message-box-12">
+                        <ul class="list-unstyled messages-list" id="container_mes_1">
+                            <!--If check == 1 , message of user send . If check == 0 , message of user receive -->
+                            <% if(data!=0){
+                                    data.message.forEach(mes=>{    
+                                          if(mes.check==1){  %>
+                            <li class="messages-me clearfix">
+                                <div class="message-body clearfix">
+                                    <div class="message-header"  >
+                                        <small class="time-messages text-muted">
+                                            <span class="fas fa-time" style=""></span><%=mes.date%>
+                                        </small>
+                                     </div>
+                                     
+                                </div>
+                                <% if(mes.Mes!="") {  %>
+                                    
+                                        
+                                         <p class="messages-p" style="border-radius: 14px 14px 0px 14px; background-color:#1877F2; color: white; float:right;"><%=mes.Mes%></p>
+                                    <% }    %>
+                                  
+                            </li>
+                            <% } 
+                            else{  %>
+                            <li class="messages-you clearfix">
+                                <div class="message-body clearfix">
+                                    <div class="message-header"  >
+                                        <small class="time-messages text-muted">
+                                            <span class="fas fa-time" style=""></span><%=mes.date%>
+                                        </small>
+                                     </div>
+                                    <div class="" style="height: 39px; ">
+                                            <p class="" width="35" height="35" style="border: none" > <%=user.email%></p>  
+                                    </div>                                     
+                                </div>
+                                <% if(mes.Mes!="") {  %>
+                                    
+                                         <p class="messages-p" style="background-color: #F2F3F5; border-radius: 14px; float: left"><%=mes.Mes%></p>
+                                    
+                                         <% } %>  
+                                
+                            </li>
+                                  <% }
+                               })
+                            } %>
+                        </ul>
+                        
+                    </div>
+                  
+                    <div class="card-footer">
+                        <form action="/send_message/<%=cookiesemail.email%>/<%=user.email%>/up_file" method="POST" enctype="multipart/form-data" id="send_message" style="margin:auto">
+                            <div class="input-group">
+                                <div style="padding: 5px 10px 0px 0px;">
+                                    
+                                    <input id="image_input" type="file" style="display: none;" name="up_image">
+                                </div>
+                                <input id="text_value" type="text" name="messages" class="form-control input-sm"
+                                    placeholder="Type your message here..." />
+                                <div style="padding: 5px 0px 0px 10px;">
+                                    <label for="send_mess">
+                                        <i class="fas fa-reply"></i>
+                                    </label>
+                                    <button id="send_mess" class="btn btn-primary" type="submit"
+                                        style="display: none;"></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <%- include('realtime_chat') -%>
+                </div>
+            </div>  
+        </div>
+  </div>
+		</div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

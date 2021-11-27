@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		{{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
+		<script src="https://kit.fontawesome.com/94883f0d72.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+	  		<h1><a  class="logo" style="color:black">School manager</a></h1>
+        <ul class="list-unstyled components mb-5" >
+          <li class="active" >
+          
+            <a href="/account/indexAdmin" style="text-decoration: none;"><span class="fas fa-chart-pie mr-3 "></span> Dashboard</a>
+          </li>
+          <li>
+              <a href="/class/allclass" style="text-decoration: none;"><span class="fas fa-school mr-3"></span> All Class</a>
+          </li>
+          <li>
+            <a href="/admin/createStudent"style="text-decoration: none;"><span class="fas fa-plus-circle mr-3"></span> Create student</a>
+          </li>
+          <li>
+            <a href="/admin/createAccount"style="text-decoration: none;"><span class="fas fa-plus-circle mr-3"></span> Create teacher</a>
+          </li>
+          <li>
+            <a href="/class/create"style="text-decoration: none;"><span class="fas fa-plus-circle mr-3"></span> Create class</a>
+          </li>
+          <li>
+            <a href="/file/file" style="text-decoration: none;"><span class="fas fa-file mr-3"></span> Plans </a>
+          </li>
+          <li>
+            <a href="/admin/chooseAttendance" style="text-decoration: none;"><span class="far fa-calendar-alt mr-3"></span>  Attendance </a>
+          </li>
+          <li>
+            <a href="/post/allposts" style="text-decoration: none;"><span class="far far fa-newspaper mr-3"></span>  Post </a>
+          </li>
+          <li>
+            <a href="/student/enrollment" style="text-decoration: none;"><span class="far far fa-newspaper mr-3"></span>  Online enrollment </a>
+          </li>
+          <li>
+            <a href="/logout" style="text-decoration: none;"><span class="fas fa-sign-out-alt mr-3"></span> Log out </a>
+          </li>
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5"> 
+        <h3>Create Student</h3>
+
+        <form method="POST" action="/admin/docreateStudent">
+        <div class="mb-2">
+
+          <label class="form-label">Parent's Name</label>
+          <input type="text" class="form-control" id="" aria-describedby="" name="username" value="{{data.username}}" pattern="[a-zA-Z\s]+" title="Username shouldn't contain number" required>
+        </div>
+        
+        <div class="form-row  ">
+          <div class="form-group col-md-6 ">
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email" value="{{data.email}}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password"title="Password needs to be at least 8 characters without special characters (/,?, Etc)" minlength="8" pattern="[a-zA-Z0-9]+"  required>
+          </div>
+        </div>
+        <div class="mb-0,5">
+          <label  class="form-label">Age</label>
+          <input type="text" class="form-control" id="" name="age" value="{{data.age}}" pattern="[0-9]+" required>
+        </div>
+        
+        <div class="mb-0,5">
+          <label  class="form-label">Phone</label>
+          <input type="text" class="form-control" id="" name="phone" value="{{data.phone}}" pattern="(\+84|0)\d{8,10}" minlength="8" maxlength="10" title="Phone number must not contain letters or any other characters.Phone number must be between 8-10 numbers." required>
+        </div>
+        <div class="mb-0,5">
+          <label  class="form-label">Address</label>
+          <input type="text" class="form-control" id="" name="address" value="{{data.address}}" required>
+        </div>
+
+        <div class="mb-0,5">
+          <label class="form-label">Student's Name</label>
+          <input type="text" class="form-control" id="" name="studentName" value="{{data.studentName}}" pattern="[a-zA-Z\s]+" title="Username shouldn't contain number" required>
+        </div>
+        
+        <div class="form-row  ">
+          <div class="form-group col-md-6 ">
+            <label>Student's Age</label>
+            <input type="text" class="form-control" id="inputEmail4"  name="studentAge"  value="{{data.studentAge}}">
+          </div>
+          <div class="form-group col-md-6">
+            <label >Student's Birthday</label>
+            <input type="date" class="form-control" id="inputPassword4" name="studentBirthday"  value="{{data.studentBirthday}}"required>
+          </div>
+        </div>
+
+        <div class="form-row  ">
+          <div class="form-group col-md-6 ">
+            <label>Student's Class</label>
+            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="studentClass"required>
+              {{#each class}}
+          
+              <option  name="studentClass">{{classID}}</option>
+          
+              {{/each}}
+
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label >Student's ID</label>
+            <input type="text" class="form-control"  name="studentID" required>
+          </div>
+        </div>
+  
+<br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+		</div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

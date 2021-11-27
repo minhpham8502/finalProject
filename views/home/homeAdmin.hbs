@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		{{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
+		<script src="https://kit.fontawesome.com/94883f0d72.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+	  		<h1><a  class="logo" style="color:black">School manager</a></h1>
+        <ul class="list-unstyled components mb-5" >
+          <li class="active" >
+          
+            <a href="/account/indexAdmin" style="text-decoration: none;"><span class="fas fa-chart-pie mr-3 "></span> Dashboard</a>
+          </li>
+          <li>
+              <a href="/class/allclass" style="text-decoration: none;"><span class="fas fa-school mr-3"></span> All Class</a>
+          </li>
+          <li>
+            <a href="/admin/createStudent"style="text-decoration: none;"><span class="fas fa-plus-circle mr-3"></span> Create student</a>
+          </li>
+          <li>
+            <a href="/admin/createAccount"style="text-decoration: none;"><span class="fas fa-plus-circle mr-3"></span> Create teacher</a>
+          </li>
+          <li>
+            <a href="/class/create"style="text-decoration: none;"><span class="fas fa-plus-circle mr-3"></span> Create class</a>
+          </li>
+          <li>
+            <a href="/file/file" style="text-decoration: none;"><span class="fas fa-file mr-3"></span> Plans </a>
+          </li>
+          <li>
+            <a href="/admin/chooseAttendance" style="text-decoration: none;"><span class="far fa-calendar-alt mr-3"></span>  Attendance </a>
+          </li>
+          <li>
+            <a href="/post/allposts" style="text-decoration: none;"><span class="far far fa-newspaper mr-3"></span>  Post </a>
+          </li>
+          <li>
+            <a href="/student/enrollment" style="text-decoration: none;"><span class="far far fa-newspaper mr-3"></span>  Online enrollment </a>
+          </li>
+          <li>
+            <a href="/logout" style="text-decoration: none;"><span class="fas fa-sign-out-alt mr-3"></span> Log out </a>
+          </li>
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5"> 
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">      
+                <h3 class="card-title ">Students
+                  <div class="fas fa-user-friends" style="color: green; font-size: 60px; float:right"></div>
+                </h3>
+                <p class="card-text" style="font-size: 20px;">{{data1.soHocsinh}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">      
+                <h3 class="card-title ">Teacher
+                  <div class="fas fa-user-tie" style="color: rgb(63, 29, 20); font-size: 60px; float:right"></div>
+                </h3>
+                <p class="card-text" style="font-size: 20px;">{{data1.soGiaovien}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">      
+                <h3 class="card-title ">Classes
+                  <div class="fas fa-school" style="color: rgb(138, 24, 167); font-size: 60px; float:right"></div>
+                </h3>
+                <p class="card-text" style="font-size: 20px;">{{data1.soLop}}</p>
+              </div>
+            </div>
+          </div>
+          
+        
+      </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Classes for 2-3 year olds', {{data1.hocsinhcualop23}}],
+          ['Classes for 3-4 year olds', {{data1.hocsinhcualop34}}],
+          ['Classes for 4-5 year olds', {{data1.hocsinhcualop45}}],
+          ['Classes for 5-6 year olds', {{data1.hocsinhcualop56}}],
+       
+        ]);
+
+        // Set chart options
+        var options = {'title':'All classes in school',
+                       'width':700,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+    <hr>
+    <div id="chart_div"></div>
+    <hr>
+		</div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

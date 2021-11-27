@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		{{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
+		<script src="https://kit.fontawesome.com/94883f0d72.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+	  		<h1><a href="index.html" class="logo">Project Name</a></h1>
+        <h1><a href="index.html" class="logo" style="color:black">School manager</a></h1>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+          
+            <a href="#"><span class="fas fa-chart-pie mr-3 "></span> Dashboard</a>
+          </li>
+          <li>
+              <a href="/class/allclass"><span class="fas fa-school mr-3"></span> All Class</a>
+          </li>
+          <li>
+            <a href="/admin/createStudent"><span class="fas fa-plus-circle mr-3"></span> Creat student</a>
+          </li>
+          <li>
+            <a href="/admin/createAccount"><span class="fas fa-plus-circle mr-3"></span> Creat teacher</a>
+          </li>
+          <li>
+            <a href="/class/create"><span class="fas fa-plus-circle mr-3"></span> Creat class</a>
+          </li>
+          <li>
+            <a href="#"><span class="fas fa-comment-alt mr-3"></span> View chat</a>
+          </li>
+          <li>
+            <a href="#"><span class="fas fa-file mr-3"></span> Plans </a>
+          </li>
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5"> 
+     <div id="content" class="p-4 p-md-5 pt-5"> 
+        <h2 style="font-weight: 450;"> All Student</h2>
+         <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              
+              <th scope="col">Student Name</th>
+              <th scope="col">Student ID</th>
+              
+
+
+              <th   style="text-align: center;">Action</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+              {{#each student}}
+
+            <tr>
+
+              <td>{{studentName}}</td>
+              <td>{{studentID}}</td>
+              
+              
+
+
+              <td style="text-align: center;">
+                
+                <a href="/student/allStudent/detail/{{_id}}" class="btn btn-primary" >Detail</a>
+
+                <a href="/student/delete{{_id}}" class="btn btn-danger">Delete</a>
+
+                
+              </td>
+            </tr>
+              {{/each}}
+
+          </tbody>
+        </table>
+		</div>
+		</div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
+                  
+        {{!-- {{#if isMessage }}
+        <form action="/message/send_messageCoordinator/{{cookies.email}}/{{data.email}}" method="GET">
+          <button class="message">Message</button>
+        </form>
+        {{/if}} --}}
+      
