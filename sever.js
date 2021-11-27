@@ -122,8 +122,9 @@ io.on("connection", (socket) => {
                     Time_Mes: `${new Date().getHours()}:${new Date().getMinutes()}-${new Date().getDate()}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`,
   
                 });
+
   
-            MongoClient.connect('mongodb://localhost:27017/project', (err, db) => {
+            MongoClient.connect('mongodb+srv://minhpham852000:Quangminh2000@cluster0.46ara.mongodb.net/project', (err, db) => {
                 let dbo = db.db("project");
                 dbo.collection("chats").updateOne(query1, {
                     "$push": {
