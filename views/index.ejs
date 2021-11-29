@@ -22,20 +22,13 @@
 	      <li class="nav-item active">
 	        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 	      </li>
+		  <li class="nav-item active">
+	        <a class="nav-link" href="/takeclass">Online enrollment</a>
+	      </li>
 	      <li class="nav-item active">
 	        <a class="nav-link" href="/login">Login</a>
 	      </li>
-	      <li class="nav-item dropdown active">
-	        <a class="nav-link" href="#" id="navbarDropdown" >
-	          Dropdown
-	        </a>
-	        <div class="dropdown-content">
-	          <a class="dropdown-item" href="#">Action</a>
-	          <a class="dropdown-item" href="#">Another action</a>
-	          <div class="dropdown-divider"></div>
-	          <a class="dropdown-item" href="#">Something else here</a>
-	        </div>
-	      </li>
+	 
 	    </ul>
 	   
 	  </div>
@@ -172,12 +165,12 @@
 			<div class="row">
 				<%for(var p of posts){%>
 				<div class="col-md-4 col-sm-6 col-12">
-					<div class="card card-product mb-3">
-					  <img class="card-img-top" src="<%= p.ImageURL %>" alt="Card image cap" style="width: 400px; height:250px">
+					<div class="card card-product mb-3" >
+					  <img class="card-img-top" src="<%= p.ImageURL %>" alt="Card image cap"style="width: 400px; height:250px" >
 					  <div class="card-body">
 					    <h5 class="card-title"><%= p.Title %></h5>
 					    <p class="card-text"><%- p.Content.substr(0,160)+ "..." %></p>
-					    <a href="/<%= p._id %>" class="btn btn-primary">Read more</a>
+					    <a href="/post<%= p._id %>" class="btn btn-primary">Read more</a>
 					  </div>
 					</div>
 					

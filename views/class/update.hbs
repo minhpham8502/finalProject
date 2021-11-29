@@ -45,6 +45,9 @@
             <a href="/file/file" style="text-decoration: none;"><span class="fas fa-file mr-3"></span> Plans </a>
           </li>
           <li>
+            <a href="/file/Officialdispatch" style="text-decoration: none;"><span class="fas fa-file mr-3"></span> View Official dispatch </a>
+          </li>
+          <li>
             <a href="/admin/chooseAttendance" style="text-decoration: none;"><span class="far fa-calendar-alt mr-3"></span>  Attendance </a>
           </li>
           <li>
@@ -65,13 +68,13 @@
       <form method="POST" action="/class/doCreate">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Class name</label>
-          <input type="text" class="form-control" id="" aria-describedby="" name="classname" value="{{data.classname}}">
+          <input type="text" class="form-control" id="" aria-describedby="" name="classname" value="{{data.classname}}" required>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Class ID</label>
-          <input type="text" class="form-control" id="" name="classID" value="{{data.classID}}">
+          <input type="text" class="form-control" id="" name="classID" value="{{data.classID}}" required>
         </div>
-          <label for="exampleInputPassword1" class="form-label">Category</label>
+          <label for="exampleInputPassword1" class="form-label">Category</label required>
 
         <div class="input-group mb-3">
 

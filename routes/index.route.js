@@ -12,8 +12,17 @@ indexrouter.get('/takeclass' ,(req,res,next)=>{
 indexrouter.get('/login' ,(req,res,next)=>{
     res.render('login.hbs')
 })
+indexrouter.get('/loginAgain' ,(req,res,next)=>{
+    res.render('loginAgain.hbs')
+})
+indexrouter.get('/loginStudentAgain' ,(req,res,next)=>{
+    res.render('loginStudentAgain.hbs')
+})
 indexrouter.get('/loginMinistry' ,(req,res,next)=>{
     res.render('./home/loginMinistry.hbs')
+})
+indexrouter.get('/loginMinistryAgain' ,(req,res,next)=>{
+    res.render('./home/loginMinistryNew.hbs')
 })
 indexrouter.get('/' ,(req,res)=>{
     Post.find({}, function(err,posts){

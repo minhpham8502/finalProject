@@ -31,17 +31,23 @@ let update =(req,res)=>{
 }
 let deleteteacher = (req,res)=>{
     AccountModel.findById({_id:req.params.id},function(err,data){
-        let classId = data.classId
+        AccountModel.find({},function(err,data1){
+            console.log(data1.length)
+
+            DashboardtModel.updateOne({db:"0" },{soGiaovien:data1.length-1},function(){
+                let classId = data.classId
         AccountModel.deleteOne({
             _id :  req.params.id
+        },function(err){
+        res.redirect('/class/allStudent/'+ classId)
+            
         })
-        .then(()=>{
-            AccountModel.find({},function(err,data1){
-                DashboardtModel.updateOne({db:"0" },{soHocsinh:data1.length},function(){
-            res.redirect('/class/allStudent/'+ classId)
-                })
             })
         })
+        
+        // .then(()=>{
+            
+        // })
     })
     
     

@@ -14,6 +14,7 @@ var bcrypt = require('bcrypt');
 const { data } = require('jquery');
 const ministryModel = require('../models/Ministry');
 const DashboardtModel = require('../models/Dashboard');
+const e = require('cors');
 const saltRounds = 10;
 // const { model } = require('../models/account');
 let indexAdmin = (req,res)=>{
@@ -179,11 +180,8 @@ let signUpController = async(req,res)=>{
 let loginController = function(req,res){
     bcrypt.compare(req.body.password, req.user.password, function(err,result){
         if(err){
-            return res.status(500).json({
-                message : "loi sever",
-                status: 500,
-                error : true
-            })
+            console.log("aaaaaaaaaa")
+            res.redirect("/loginAgain")
         }
         if(result){
             let token = jwt.sign({_id : req.user._id},'minh',{expiresIn :'1d'})
@@ -195,28 +193,26 @@ let loginController = function(req,res){
             res.cookie('accountID',user.accountID, { maxAge: 90000000, httpOnly: true });
 
             if(user.role === "admin"){
+
                 res.redirect("./indexAdmin")
             }
             if(user.role === "teacher"){
-                console.log(user.studentClass   )
-                res.redirect("./indexTeacher")
-            }
-                               
+            
+                res.redirect("./indexTeacher")                 
             }else{
-                var message= "Username or password is invalid"
-                res.render("login",{message:message})
+
+            var message= "Username or password is invalid"
+          
+                res.redirect("/loginAgain.hbs")
             }
         }
-    )
+    }
+   )
 }
 let loginStudentController = function(req,res){
     bcrypt.compare(req.body.password, req.user.password, function(err,result){
         if(err){
-            return res.status(500).json({
-                message : "loi sever",
-                status: 500,
-                error : true
-            })
+            res.redirect("/loginStudentAgain")
         }
         if(result){
             let token = jwt.sign({_id : req.user._id},'minh',{expiresIn :'1d'})
@@ -232,8 +228,8 @@ let loginStudentController = function(req,res){
             
             
             }else{
-                var message= "Username or password is invalid"
-                res.render("login",{message:message})
+            
+                res.redirect("/loginStudentAgain")
             }
         }
     )
@@ -242,11 +238,8 @@ let loginStudentController = function(req,res){
 let loginMinistryController = function(req,res){
     bcrypt.compare(req.body.password, req.user.password, function(err,result){
         if(err){
-            return res.status(500).json({
-                message : "loi sever",
-                status: 500,
-                error : true
-            })
+            res.redirect("/loginMinistryAgain")
+
         }
         if(result){
             let token = jwt.sign({_id : req.user._id},'minh',{expiresIn :'1d'})
@@ -263,8 +256,8 @@ let loginMinistryController = function(req,res){
             
             
             }else{
-                var message= "Username or password is invalid"
-                res.render("./home/loginMinistry.hbs",{message:message})
+      
+                res.redirect("/loginMinistryAgain")
             }
         }
     )

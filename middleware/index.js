@@ -77,9 +77,8 @@ let checkLogin = async (req,res,next)=>{
         // let user = await checkEmail(req.body.email)
         .then(user=>{
             if(!user){
-                var message= "Username or password is invalid"
-                res.render("login",{message:message
-                }) 
+                // var message= "Username or password is invalid"
+                res.redirect("/loginAgain") 
 
             }else{
                 req.user = user
@@ -106,9 +105,8 @@ let checkStudentLogin = async (req,res,next)=>{
         // let user = await checkEmail(req.body.email)
         .then(user=>{
             if(!user){
-                var message= "Username or password is invalid"
-                res.render("login",{message:message
-                }) 
+
+                res.redirect("/loginStudentAgain") 
 
             }else{
                 req.user = user
@@ -136,9 +134,8 @@ let checkMinistryLogin = async (req,res,next)=>{
         // let user = await checkEmail(req.body.email)
         .then(user=>{
             if(!user){
-                var message= "Username or password is invalid"
-                res.render("./home/loginMinistry.hbs",{message:message
-                }) 
+      
+                res.redirect("/loginMinistryAgain") 
 
             }else{
 

@@ -4,6 +4,7 @@ var {signUpController, loginController,indexAdmin,indexTeacher, indexMinistry,in
 const {checkAuth,checkAuthMinistry, checkAuthStudent,isEmail , checkAdmin,checkLogin,checkTeacher,checkStudentLogin,checkMinistryLogin} = require('../middleware/index');
 router.post('/sign-up', isEmail, signUpController)
 router.post('/dologin', checkLogin, loginController)
+
 router.post('/doStudentlogin', checkStudentLogin, loginStudentController)
 
 

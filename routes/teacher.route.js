@@ -13,7 +13,7 @@ teacherRoute.get('/allplans',teacherController.allplans)
 teacherRoute.get('/allplans',teacherController.allplans)
 
 teacherRoute.get('/teacher_profile:id',teacherController.profile)
-teacherRoute.get('/delete:id',teacherController.deleteteacher)
+teacherRoute.get('/deleteTeacher:id',teacherController.deleteteacher)
 //  diem danh
 teacherRoute.get('/CreateAttendance', teacherController.Attendance)
 teacherRoute.post('/doAttendance', teacherController.doAttendance)

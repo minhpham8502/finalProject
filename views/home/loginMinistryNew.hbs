@@ -1,30 +1,42 @@
 
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
 </head>
 <body>
 <!-- menu -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 20px;">
   <div class="container">
-
+	  <!-- <a class="navbar-brand" href="/">Home</a> -->
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
 
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item active">
 	        <a class="nav-link" href="/login">Login</a>
 	      </li>
-	  
+	      <li class="nav-item dropdown active">
+	        <a class="nav-link" href="#" id="navbarDropdown" >
+	          Dropdown
+	        </a>
+	        <div class="dropdown-content">
+	          <a class="dropdown-item" href="#">Action</a>
+	          <a class="dropdown-item" href="#">Another action</a>
+	          <div class="dropdown-divider"></div>
+	          <a class="dropdown-item" href="#">Something else here</a>
+	        </div>
+	      </li>
 	    </ul>
 	   
 	  </div>
@@ -44,52 +56,36 @@
 	</div>
 
   </div>
-
+ 
 <br>
 
 <div class="container">
-	<header style="text-align: center;">
-        
-        <div class="">
-            <form method="POST" action="/account/dologin">
-            <h1>Login</h1>
-            <hr/>
-            <h1>Teacher Login</h1>
-            <p><input type="text" id="email" name="email" placeholder="Username"></p>
-            <p><input type="password" id="password" name="password" placeholder="Password"></p>
-  
-            <p><button id="btn">Login</button></p>
-
-            </form>
-            
-        </div>
-    </header>
-   
-    <br>
-<hr>
+	
     <header style="text-align: center;">
         
         <div class="">
-            <form method="POST" action="/account/doStudentlogin">
-            <h1> Student Login</h1>
+            <form method="POST" action="/account/doMinistrylogin">
+            <h1> Ministry Login</h1>
          
             <p><input type="text" id="email" name="email" placeholder="Username"></p>
             <p><input type="password" id="password" name="password" placeholder="Password"></p>
       
-
+              <p style = " color: red">Username or password is invalid</p>
+    
             <p><button id="btn">Login</button></p>
+
             </form>
             
         </div>
         
     </header>
-    
+
 </div>
-
+<!-- end list product -->
 <br>
 <br>
 
-
+<!-- giáo vien -->
 
 <br>
 <div class="section-bg style-1 " >
@@ -97,7 +93,7 @@
 	  <div class="row">
 		<div class="col-lg-4">
 		  <h2 class="section-title-underline style-2">
-			<span>About Our school</span>
+			<span>Footer</span>
 		  </h2>
 		</div>
 		<div class="col-lg-8">

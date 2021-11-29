@@ -31,7 +31,9 @@
                 <a href="/file/sendMail" style="text-decoration: none"><span class="fas fa-envelope mr-3" style="text-decoration: none"></span>Invite</a>
             </li>
          
-              
+            <li>
+              <a href="/logout" style="text-decoration: none;"><span class="fas fa-sign-out-alt mr-3"></span> Log out </a>
+            </li>
           
         </ul>
 
@@ -44,14 +46,14 @@
           <form class="mt-4 ml-3" action="/file/uploadFileMinistry" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Date</label>
-              <input type="date" class="form-control" id="exampleInputPassword1" name="date">
+              <input type="date" class="form-control" id="exampleInputPassword1" name="date" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Desciption</label>
               <input type="text" class="form-control" id="exampleInputPassword1" name="description">
             </div>
             <div class="input-group mb-3">
-              <input type="file" class="form-control" id="inputGroupFile02"  name="filePath">
+              <input type="file" class="form-control" id="inputGroupFile02"  name="filePath" required>
               <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Upload file</button>
             </div>
           </form>   

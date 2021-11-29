@@ -6,8 +6,8 @@
 	<title></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
 </head>
 <body>
@@ -50,14 +50,16 @@
 <div class="container">
 	<header style="text-align: center;">
         
-        <div class="">
+        <div class="login">
             <form method="POST" action="/account/dologin">
             <h1>Login</h1>
             <hr/>
             <h1>Teacher Login</h1>
             <p><input type="text" id="email" name="email" placeholder="Username"></p>
             <p><input type="password" id="password" name="password" placeholder="Password"></p>
-  
+     
+            {{!-- <p style = " color: red">Username or password is invalid</p> --}}
+
             <p><button id="btn">Login</button></p>
 
             </form>
@@ -69,13 +71,15 @@
 <hr>
     <header style="text-align: center;">
         
-        <div class="">
+        <div class="login">
             <form method="POST" action="/account/doStudentlogin">
             <h1> Student Login</h1>
          
             <p><input type="text" id="email" name="email" placeholder="Username"></p>
             <p><input type="password" id="password" name="password" placeholder="Password"></p>
-      
+       
+            <p style = " color: red">Username or password is invalid</p>
+ 
 
             <p><button id="btn">Login</button></p>
             </form>

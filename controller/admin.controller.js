@@ -58,8 +58,8 @@ class AdminController {
             if(err){
                 console.log(err)
             }else{
-                AccountModel.find({},function(err,data1){
-                    DashboardtModel.findOneAndUpdate({db:"0"},{"soGiaovien": data1.length -1},function(err,data2){
+                AccountModel.find({role: "teacher"},function(err,data1){
+                    DashboardtModel.findOneAndUpdate({db:"0"},{"soGiaovien": data1.length },function(err,data2){
                         res.redirect("/class/allclass")  
                         
                     })

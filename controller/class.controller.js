@@ -152,12 +152,15 @@ class ClassController {
             AccountModel.deleteMany({classId:data.classID},function(err,result1){
                 StudentModel.deleteMany({studentClass:data.classID},function(err,result2){
                     ClassModel.deleteOne({_id : req.params.id},function(){
-                        AccountModel.find({},function(err,result3){
                             ClassModel.find({},function(err,result6){
+                        AccountModel.find({},function(err,result3){
+
                                 StudentModel.find({},function(err,result4){
                                     if(data.category=="hocsinhcualop23"){
+                                    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+
                                         ClassModel.find({category : "hocsinhcualop23"},function(err,result5){
-                                            DashboardtModel.updateOne({db:"0"},{soLop:result6.length,soGiaovien:result3.length,soHocsinh:result4.length,hocsinhcualop23:result5.length},function(err,result1){
+                                            DashboardtModel.updateOne({db:"0"},{soLop:result6.length,oGiaovien:result3.length-1,soHocsinh:result4.length,hocsinhcualop23:result5.length},function(err,result1){
                                                 res.redirect('/class/allclass')
                                 
                                             })
@@ -165,7 +168,7 @@ class ClassController {
         
                                     }else if(data.category=="hocsinhcualop34"){
                                         ClassModel.find({category : "hocsinhcualop34"},function(err,result5){
-                                            DashboardtModel.updateOne({db:"0"},{soLop:result6.length,soGiaovien:result3.length,soHocsinh:result4.length,hocsinhcualop34:result5.length},function(err,result1){
+                                            DashboardtModel.updateOne({db:"0"},{soLop:result6.length,soGiaovien:result3.length-1,soHocsinh:result4.length,hocsinhcualop34:result5.length},function(err,result1){
                                                 res.redirect('/class/allclass')
                                 
                                             })
@@ -174,7 +177,7 @@ class ClassController {
                                     }
                                     else if(data.category=="hocsinhcualop45"){
                                         ClassModel.find({category : "hocsinhcualop45"},function(err,result5){
-                                            DashboardtModel.updateOne({db:"0"},{soLop:result6.length,soGiaovien:result3.length,soHocsinh:result4.length,hocsinhcualop45:result5.length},function(err,result1){
+                                            DashboardtModel.updateOne({db:"0"},{soLop:result6.length,soGiaovien:result3.length-1,soHocsinh:result4.length,hocsinhcualop45:result5.length},function(err,result1){
                                                 res.redirect('/class/allclass')
                                 
                                             })
@@ -183,7 +186,7 @@ class ClassController {
                                     }
                                     else if(data.category=="hocsinhcualop56"){
                                         ClassModel.find({category : "hocsinhcualop56"},function(err,result5){
-                                            DashboardtModel.updateOne({db:"0"},{soLop:result6.length,soGiaovien:result3.length,soHocsinh:result4.length,hocsinhcualop56:result5.length},function(err,result1){
+                                            DashboardtModel.updateOne({db:"0"},{soLop:result6.length,soGiaovien:result3.length-1,soHocsinh:result4.length,hocsinhcualop56:result5.length},function(err,result1){
                                                 res.redirect('/class/allclass')
                                 
                                             })

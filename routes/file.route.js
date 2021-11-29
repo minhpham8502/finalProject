@@ -152,7 +152,20 @@ fileRouter.get('/file',(req,res)=>{
         }
     })
 })
-
+fileRouter.get('/Officialdispatch',(req,res)=>{
+    let email = req.cookies.email
+    fileModel.find({type:"ministry"},(err,data)=>{
+        if(err){
+            console.log(err)
+        }
+        else if(data.length>0){
+            res.render('./admin/dispatch.hbs',{data:data})
+        }
+        else{
+            res.render('./admin/dispatch.hbs',{data:data})
+        }
+    })
+})
 
 fileRouter.get('/fileSubmited',(req,res)=>{
     let email = req.cookies.email
