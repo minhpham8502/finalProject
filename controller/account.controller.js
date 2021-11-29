@@ -203,7 +203,7 @@ let loginController = function(req,res){
 
             var message= "Username or password is invalid"
           
-                res.redirect("/loginAgain.hbs")
+                res.redirect("/loginAgain")
             }
         }
     }
