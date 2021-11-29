@@ -94,7 +94,7 @@ class messtController {
                     userReceive: req.params.user
                 }
                 const MongoClient = mongodb.MongoClient;
-                MongoClient.connect('mongodb://localhost:27017/project', (err, db) => {
+                MongoClient.connect('mongodb+srv://minhpham852000:Quangminh2000@cluster0.46ara.mongodb.net/project', (err, db) => {
                     let dbo = db.db("project");
                     // find user send
                     dbo.collection("student").findOne({ email: req.params.cookiesemail}, (err, cookiesemail) => {
@@ -139,7 +139,7 @@ class messtController {
                     userReceive: req.params.user
                 }
                 const MongoClient = mongodb.MongoClient;
-                MongoClient.connect('mongodb://localhost:27017/project', (err, db) => {
+                MongoClient.connect('mongodb+srv://minhpham852000:Quangminh2000@cluster0.46ara.mongodb.net/project', (err, db) => {
                     let dbo = db.db("project");
                     // find user send
                     dbo.collection("account").findOne({ email: req.params.cookiesemail, role :"teacher" }, (err, cookiesemail) => {
