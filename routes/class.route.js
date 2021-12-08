@@ -27,8 +27,6 @@ classRoute.get('/evaluate2nd/:id', checkTeacher,classController.danhgiabaibao2nd
 
 classRoute.use(checkAdmin);
 
-//sơn test|
-
 
 classRoute.use('/uploads', express.static('uploads'));
 classRoute.use('/public', express.static('public'));

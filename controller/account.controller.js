@@ -20,12 +20,16 @@ const saltRounds = 10;
 let indexAdmin = (req,res)=>{
     let email = req.cookies.email
     AccountModel.findOne({email : email},function(err,data){
-        DashboardtModel.findOne({db : "0"},function(err,data1){
+        AccountModel.find({role : "teacher"},function(err,data2){
+        DashboardtModel.findOneAndUpdate({db : "0"},{soGiaovien : data2.length},function(err,data1){
+
+        }).then((data1)=>{
             res.render('./home/homeAdmin',{account:data,data1:data1})
 
         })
 
     })
+})
     
       
     
@@ -119,29 +123,6 @@ let indexStudent = (req,res)=>{
     })
 }
 
-let indexGuest = (req,res)=>{
-    let classID = req.cookies.classID;
-        fileModel.find({classID:classID,status: "Pass"},function(err,result){
-            if(err){
-                console.log(err) }else{
-                    fileModel.find({classID:classID,status2: "Pass"},function(err,result2){
-                        if(err){
-                            console.log(err) }else{
-                            res.render('guest/baocuahocsinh',{data:result,data2:result2})
-                        }
-                    })          
-            }
-        }) 
-}
-
-let indexManager = (req,res)=>{
-    let email = req.cookies.email
-    AccountModel.findOne({email : email})
-    .then(data=>{
-        res.render('./home/homeMarketingManager',{account:data})
-
-    })
-}
 
 let signUpController = async(req,res)=>{
     try {
@@ -180,8 +161,8 @@ let signUpController = async(req,res)=>{
 let loginController = function(req,res){
     bcrypt.compare(req.body.password, req.user.password, function(err,result){
         if(err){
-            console.log("aaaaaaaaaa")
             res.redirect("/loginAgain")
+
         }
         if(result){
             let token = jwt.sign({_id : req.user._id},'minh',{expiresIn :'1d'})
@@ -193,21 +174,18 @@ let loginController = function(req,res){
             res.cookie('accountID',user.accountID, { maxAge: 90000000, httpOnly: true });
 
             if(user.role === "admin"){
-
                 res.redirect("./indexAdmin")
             }
             if(user.role === "teacher"){
-            
-                res.redirect("./indexTeacher")                 
+                console.log(user.studentClass   )
+                res.redirect("./indexTeacher")
+            }
+                               
             }else{
-
-            var message= "Username or password is invalid"
-          
                 res.redirect("/loginAgain")
             }
         }
-    }
-   )
+    )
 }
 let loginStudentController = function(req,res){
     bcrypt.compare(req.body.password, req.user.password, function(err,result){
@@ -284,8 +262,7 @@ module.exports ={
     indexAdmin,
     indexTeacher,
     indexStudent,
-    indexManager,
-    indexGuest,
+
     loginStudentController,
     danhgiabaibao,
     loginMinistryController,

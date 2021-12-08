@@ -12,19 +12,25 @@ const ClassModel = require('../models/class');
 
 class messtController {
     list(req,res){
-        ClassModel.findOne({teacherID: req.cookies.accountID})
-        .then(data=>{
-            StudentModel.find({studentClass: data.classID})
-                .then((data)=>{
-                    AccountModel.findOne({accountID:req.cookies.accountID})
-                    .then(data2=>{
-                   
-                        res.render('./message/list_mess',{student : data, teacher: data2})
+        // ClassModel.findOne({teacherID: req.cookies.classId},function(err,data1){
+            StudentModel.find({studentClass:req.cookies.classId},function(err,data){
+                // AccountModel.findOne({accountID:req.cookies.accountID},function(err,data2){
+                    res.render('./message/list_mess',{student : data})
 
-                    })
+                // })
+                
+                   
+            })
+
+        // })
+ 
+              
+                    
+
+                 
                     // console.log(data)
-                })
-        })
+                
+      
 
         
     }

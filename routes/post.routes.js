@@ -26,11 +26,13 @@ postRoute.get('/allposts', postController.post)
 postRoute.get('/new', postController.new)
 postRoute.get('/edit/:id', postController.edit)
 
-postRoute.post('/delete/:id', postController.delete)
+postRoute.get('/delete/:id', postController.delete)
 
 
 postRoute.post('/postnew',multerConf.array('image', 2),(req,res)=>{
     imgpath = '/uploads/'+  req.files[0].originalname
+    if(req.files.length == 1 && imgpath.endsWith('PNG') ||  imgpath.endsWith('JPEG')){
+
       var post = new Post({
           Title: req.body.title,
           Content: req.body.content,
@@ -44,11 +46,15 @@ postRoute.post('/postnew',multerConf.array('image', 2),(req,res)=>{
          
           return res.redirect('/post/allposts');
       });
-       
+    }else{
+        return res.render('newPost.hbs',{errmess:true});
+
+    }
   })
 
 postRoute.post('/doedit:id',multerConf.array('image', 2),(req,res)=>{
     imgpath = '/uploads/'+  req.files[0].originalname
+    if(req.files.length == 1 && imgpath.endsWith('PNG') ||  imgpath.endsWith('JPEG')){
 
     Post.findByIdAndUpdate({_id:req.params.id},{$set:{
         Title: req.body.title,
@@ -61,7 +67,13 @@ postRoute.post('/doedit:id',multerConf.array('image', 2),(req,res)=>{
          
         return res.redirect('/post/allposts');
     });    
-     
+}else{
+ 
+    Post.findById({_id:req.params.id},function(err,post){
+        if(err) throw err;
+        return res.render('editPost.hbs',{post:post, errmess:true});
+    });   
+}
  }
 );
 

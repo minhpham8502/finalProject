@@ -31,10 +31,6 @@ let update =(req,res)=>{
 }
 let deleteteacher = (req,res)=>{
     AccountModel.findById({_id:req.params.id},function(err,data){
-        AccountModel.find({},function(err,data1){
-            console.log(data1.length)
-
-            DashboardtModel.updateOne({db:"0" },{soGiaovien:data1.length-1},function(){
                 let classId = data.classId
         AccountModel.deleteOne({
             _id :  req.params.id
@@ -42,13 +38,13 @@ let deleteteacher = (req,res)=>{
         res.redirect('/class/allStudent/'+ classId)
             
         })
-            })
+           
         })
         
         // .then(()=>{
             
         // })
-    })
+    
     
     
 }

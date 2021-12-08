@@ -139,18 +139,142 @@ class ClassController {
 
     doupdate(req,res){
         // var id1 = req.params.id
-        ClassModel.updateOne({
-            _id : req.params.id
-        }, req.body)
-        .then(()=>{
-            res.redirect('/class/allclass')
+        ClassModel.findById({_id : req.params.id},function(err,data){
+            if(data.category =="hocsinhcualop23"){
+                ClassModel.updateOne({ _id : req.params.id}, req.body,function(data1){
+                    ClassModel.findById({_id : req.params.id},function(err,data4){
+
+                    ClassModel.find({category:"hocsinhcualop23"},function(err,data2){
+                        if(data4.category =="hocsinhcualop34"){
+                            ClassModel.find({category:"hocsinhcualop34"},function(err,data3){ 
+                                DashboardtModel.updateOne({db:"0"},{hocsinhcualop23: data2.length, hocsinhcualop34:  data3.length })
+                                .then(()=>{
+                                    res.redirect('/class/allclass')
+                                })
+                            })
+                        }else if(data4.category =="hocsinhcualop45"){
+                            ClassModel.find({category:"hocsinhcualop45"},function(err,data3){ 
+                                DashboardtModel.updateOne({db:"0"},{hocsinhcualop23: data2.length , hocsinhcualop45:  data3.length })
+                                .then(()=>{
+                                    res.redirect('/class/allclass')
+                                })
+                            })
+                        }else if(data4.category =="hocsinhcualop56"){
+                            ClassModel.find({category:"hocsinhcualop56"},function(err,data3){ 
+                                DashboardtModel.updateOne({db:"0"},{hocsinhcualop23: data2.length , hocsinhcualop56:  data3.length })
+                                .then(()=>{
+                                    res.redirect('/class/allclass')
+                                })
+                            })
+                        }
+                    })
+                })
+                })
+            }else if(data.category =="hocsinhcualop34"){
+                ClassModel.updateOne({ _id : req.params.id}, req.body,function(data1){
+                    ClassModel.findById({_id : req.params.id},function(err,data4){
+
+                    ClassModel.find({category:"hocsinhcualop34"},function(err,data2){
+                        if(data4.category =="hocsinhcualop34"){
+                            ClassModel.find({category:"hocsinhcualop23"},function(err,data3){ 
+                                DashboardtModel.updateOne({db:"0"},{hocsinhcualop34: data2.length , hocsinhcualop23:  data3.length })
+                                .then(()=>{
+                                    res.redirect('/class/allclass')
+                                })
+                            })
+                        }else if(data4.category =="hocsinhcualop45"){
+                            ClassModel.find({category:"hocsinhcualop45"},function(err,data3){ 
+                                DashboardtModel.updateOne({db:"0"},{hocsinhcualop34: data2.length , hocsinhcualop45:  data3.length })
+                                .then(()=>{
+                                    res.redirect('/class/allclass')
+                                })
+                            })
+                        }else if(data4.category =="hocsinhcualop56"){
+                            ClassModel.find({category:"hocsinhcualop56"},function(err,data3){ 
+                                DashboardtModel.updateOne({db:"0"},{hocsinhcualop34: data2.length , hocsinhcualop56:  data3.length })
+                                .then(()=>{
+                                    res.redirect('/class/allclass')
+                                })
+                            })
+                        }
+                    })
+                })
+                })
+            }else if(data.category =="hocsinhcualop45"){
+                ClassModel.updateOne({ _id : req.params.id}, req.body,function(data1){
+                    ClassModel.findById({_id : req.params.id},function(err,data4){
+                        ClassModel.find({category:"hocsinhcualop45"},function(err,data2){
+                            if(data4.category =="hocsinhcualop23"){
+                                ClassModel.find({category:"hocsinhcualop45"},function(err,data3){ 
+                                    DashboardtModel.updateOne({db:"0"},{hocsinhcualop45: data2.length , hocsinhcualop23:  data3.length })
+                                    .then(()=>{
+                                        res.redirect('/class/allclass')
+                                    })
+                                })
+                            }else if(data4.category =="hocsinhcualop34"){
+                                ClassModel.find({category:"hocsinhcualop34"},function(err,data3){ 
+                                    DashboardtModel.updateOne({db:"0"},{hocsinhcualop45: data2.length , hocsinhcualop34:  data3.length })
+                                    .then(()=>{
+                                        res.redirect('/class/allclass')
+                                    })
+                                })
+                            }else if(data4.category =="hocsinhcualop56"){
+                                ClassModel.find({category:"hocsinhcualop56"},function(err,data3){ 
+                                    DashboardtModel.updateOne({db:"0"},{hocsinhcualop45: data2.length , hocsinhcualop56:  data3.length })
+                                    .then(()=>{
+                                        res.redirect('/class/allclass')
+                                    })
+                                })
+                            }
+                        })
+                    })
+                    
+                })
+            }else if(data.category =="hocsinhcualop56"){
+                ClassModel.updateOne({ _id : req.params.id}, req.body,function(data1){
+                    ClassModel.findById({_id : req.params.id},function(err,data4){
+
+                    ClassModel.find({category:"hocsinhcualop56"},function(err,data2){
+                        if(data4.category =="hocsinhcualop23"){
+                            ClassModel.find({category:"hocsinhcualop23"},function(err,data3){ 
+                                DashboardtModel.updateOne({db:"0"},{hocsinhcualop56: data2.length , hocsinhcualop23:  data3.length })
+                                .then(()=>{
+                                    res.redirect('/class/allclass')
+                                })
+                            })
+                        }else if(data4.category =="hocsinhcualop34"){
+                            ClassModel.find({category:"hocsinhcualop34"},function(err,data3){ 
+                                DashboardtModel.updateOne({db:"0"},{hocsinhcualop56: data2.length , hocsinhcualop34:  data3.length })
+                                .then(()=>{
+                                    res.redirect('/class/allclass')
+                                })
+                            })
+                        }else if(data4.category =="hocsinhcualop45"){
+                            ClassModel.find({category:"hocsinhcualop45"},function(err,data3){ 
+                                DashboardtModel.updateOne({db:"0"},{hocsinhcualop56: data2.length , hocsinhcualop45:  data3.length })
+                                .then(()=>{
+                                    res.redirect('/class/allclass')
+                                })
+                            })
+                        }
+                    })
+                })
+            })
+            }
+
+        //    .then(()=>{
+        //         res.redirect('/class/allclass')
+        //     })
+
+            
         })
+        
     }
 
     delete(req,res){
         ClassModel.findById({_id : req.params.id},function(err,data){
-            AccountModel.deleteMany({classId:data.classID},function(err,result1){
-                StudentModel.deleteMany({studentClass:data.classID},function(err,result2){
+            // AccountModel.deleteMany({classId:data.classID},function(err,result1){
+                // StudentModel.deleteMany({studentClass:data.classID},function(err,result2){
                     ClassModel.deleteOne({_id : req.params.id},function(){
                             ClassModel.find({},function(err,result6){
                         AccountModel.find({},function(err,result3){
@@ -160,7 +284,7 @@ class ClassController {
                                     console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
                                         ClassModel.find({category : "hocsinhcualop23"},function(err,result5){
-                                            DashboardtModel.updateOne({db:"0"},{soLop:result6.length,oGiaovien:result3.length-1,soHocsinh:result4.length,hocsinhcualop23:result5.length},function(err,result1){
+                                            DashboardtModel.updateOne({db:"0"},{soLop:result6.length,soGiaovien:result3.length-1,soHocsinh:result4.length,hocsinhcualop23:result5.length},function(err,result1){
                                                 res.redirect('/class/allclass')
                                 
                                             })
@@ -198,9 +322,9 @@ class ClassController {
                         })
                     })
 
-                })
+                // })
 
-            })
+            // })
         })
         
         

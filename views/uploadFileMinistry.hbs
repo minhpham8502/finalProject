@@ -50,12 +50,15 @@
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Desciption</label>
-              <input type="text" class="form-control" id="exampleInputPassword1" name="description">
+              <input type="text" class="form-control" id="exampleInputPassword1" name="description" required>
             </div>
             <div class="input-group mb-3">
               <input type="file" class="form-control" id="inputGroupFile02"  name="filePath" required>
               <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Upload file</button>
             </div>
+            {{#if errmess}}
+                <p style="color: red;">Please submit the file in docx format</p>
+              {{/if}} 
           </form>   
   <br>
           <table class="table">
@@ -68,24 +71,23 @@
   
           
   
-                <% data.forEach(function(data) { %>
+                {{#each data}}
                   <tr>
               
                       <td>
-                        <a href="/download/<%= data._id %>">
-                          <%= data.nameFile %>
+                        <a href="/download/{{_id}} ">
+                          {{{nameFile}}} 
                         </a>
                       </td>
                       <td>
-                        <%= data.date %>
-
+                        {{date}} 
                       </td>
                       <td>
-                        <%= data.description %>
+                        {{description}}
                       </td>
                   
                   </tr>
-                  <% }); %>
+                  {{/each}}
           </table>
   
         </div>

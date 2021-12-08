@@ -56,17 +56,15 @@ fileRouter.get('/fileMinistry',(req,res)=>{
         if(err){
             console.log(err)
         }
-        else if(data.length>0){
-            res.render('uploadFileMinistry.ejs',{data:data})
-        }
+      
         else{
-            res.render('uploadFileMinistry.ejs',{data:data})
+            res.render('uploadFileMinistry.hbs',{data:data})
         }
     })
 })
 fileRouter.post('/uploadFileMinistry',upload.array('filePath',1),(req,res)=>{
     x = req.files[0].originalname
-        if(req.files.length == 1){
+        if(req.files.length == 1 && x.endsWith('docx')){
             if(x.endsWith('docx')){
                 xdoc ='uploads/'+  req.files[0].originalname
                 var x1 = './public/' + xdoc
@@ -80,7 +78,7 @@ fileRouter.post('/uploadFileMinistry',upload.array('filePath',1),(req,res)=>{
                     }
                 });
             }
-        }
+        
             let email = req.cookies.email
             var temp = new fileModel({
                 filePathdoc: xdoc,
@@ -92,47 +90,24 @@ fileRouter.post('/uploadFileMinistry',upload.array('filePath',1),(req,res)=>{
                 type:"ministry"
 
             })
-            temp.save((err,data)=>{
+            temp.save((err)=>{
                 if(err){
                     console.log(err)
                 }
-                // let email = req.cookies.email
-                // var content = 'You have just uploaded an article to the system. Name: ' + x;
-                // var mainOptions = { 
-                //     from: 'fptedunotification@gmail.com',
-                //     to: email,  
-                //     subject: 'Test Nodemailer',
-                //     text: content 
-                // }
-                // transporter.sendMail(mainOptions, function(err, info){                     
-                //     if (err) {
-                //         console.log(err);
-                //     } 
-                // });
-                // let classID = req.cookies.classID
-                // AccountModel.findOne({
-                //     role: "teacher",
-                //     classID: classID
-                // },function(err, result){
-                //     var content = email + 'just uploaded an article to the system. Name: ' + x;
-                //     var mainOptions2 = { 
-                //     from: 'fptedunotification@gmail.com',
-                //     to: result.email,  
-                //     subject: 'Notification',
-                //     text: content
-                // }
-                // transporter.sendMail(mainOptions2, function(err, info){
-                //     if (err) {
-                //         console.log(err);
-                //     } 
-                // });
-            // })
+              
             res.redirect('/file/fileMinistry')
-            }) 
-        // }else{
-        //     res.send('<script>alert("Only file formats docx, img, png, gif can be uploaded. You must upload at least 1 docx file and 1 image file (optional)");window.location.href = "/file";</script>');      
-        // }
-    // }   
+            })
+        }else{
+            fileModel.find({type:"ministry"},(err,data)=>{
+                if(err){
+                    console.log(err)
+                }
+                else{
+                    res.render('uploadFileMinistry.hbs',{data:data, errmess:true})
+                }
+            })
+        } 
+ 
 })
 fileRouter.use(checkAuth)
 
@@ -144,11 +119,11 @@ fileRouter.get('/file',(req,res)=>{
         if(err){
             console.log(err)
         }
-        else if(data.length>0){
-            res.render('uploadFile.ejs',{data:data})
-        }
+        // else if(data.length>0){
+        //     res.render('uploadFile',{data:data})
+        // }
         else{
-            res.render('uploadFile.ejs',{data:data})
+            res.render('uploadFile',{data:data})
         }
     })
 })
@@ -222,7 +197,7 @@ fileRouter.get('/fileSubmited',(req,res)=>{
 
 fileRouter.post('/upload',upload.array('filePath',1),(req,res)=>{
     x = req.files[0].originalname
-        if(req.files.length == 1){
+        if(req.files.length == 1 && x.endsWith('docx')){
             if(x.endsWith('docx')){
                 xdoc ='uploads/'+  req.files[0].originalname
                 var x1 = './public/' + xdoc
@@ -236,7 +211,6 @@ fileRouter.post('/upload',upload.array('filePath',1),(req,res)=>{
                     }
                 });
             }
-        }
             let email = req.cookies.email
             var temp = new fileModel({
                 filePathdoc: xdoc,
@@ -252,16 +226,20 @@ fileRouter.post('/upload',upload.array('filePath',1),(req,res)=>{
                 if(err){
                     console.log(err)
                 }
-                // let email = req.cookies.email
-                // var content = 'You have just uploaded an article to the system. Name: ' + x;
-                // var mainOptions = { 
-                //     from: 'fptedunotification@gmail.com',
-                //     to: email,  
-                //     subject: 'Test Nodemailer',
-                //     text: content 
-                // }
-            res.redirect('/file/file')
+                return res.redirect('/file/file')
+
             }) 
+        }else{
+            fileModel.find({type:"doc"},(err,data)=>{
+                if(err){
+                    console.log(err)
+                }
+                else{
+                    res.render('uploadFile',{data:data, errmess:true})
+                }
+            })
+        }
+            
 
 })
 

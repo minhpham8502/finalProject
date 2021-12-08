@@ -65,7 +65,7 @@
 
         <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5 pt-5"> 
-      <form method="POST" action="/class/doCreate">
+      <form method="POST" action="/class/doupdate{{data._id}}">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Class name</label>
           <input type="text" class="form-control" id="" aria-describedby="" name="classname" value="{{data.classname}}" required>
@@ -101,7 +101,34 @@
             </select>
           </div>
         
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#exampleModal">Submit</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Do you want to continue the changes?
+                </div>
+                <div class="modal-footer">
+                  {{!-- <a href="/admin/chooseAttendance" class="btn btn-secondary" data-dismiss="modal">Close</a> --}}
+                  <button id="btnSubmit" type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+           </form>
+ 
+          <script>
+            $('#myModal').on('shown.bs.modal', function () {
+              $('#myInput').trigger('focus')
+            })
+          </script>
       </form>
 		</div>
 

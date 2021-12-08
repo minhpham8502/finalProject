@@ -99,7 +99,11 @@
                     
                     <div class="col-sm-10"> 
                         
-                        <input type="file" name="image" class="form-control boxed" placeholder="" required> </div>
+                        <input type="file" name="image" class="form-control boxed" placeholder="" required> 
+                        {{#if errmess}}
+                <p style="color: red;">Please submit the file in PNG or JPEG format</p>
+              {{/if}} 
+                        </div>
                 </div>
                 <!-- <input type="file" hidden name="posturl" value="<%=post.posturl%>"> -->
         

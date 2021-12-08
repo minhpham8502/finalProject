@@ -1,15 +1,20 @@
+
 <!doctype html>
 <html lang="en">
   <head>
   	<title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
 		<script src="https://kit.fontawesome.com/94883f0d72.js" crossorigin="anonymous"></script>
+        
     <link rel="stylesheet" href="/css/style.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    
   </head>
   <body>
 		
@@ -63,62 +68,62 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5"> 
-        <div class="content">
-          <h1>Upload file:</h1>
-          <form class="mt-4 ml-3" action="/file/upload" method="POST" enctype="multipart/form-data">
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Date</label>
-              <input type="date" class="form-control" id="exampleInputPassword1" name="date" required>
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Desciption</label>
-              <input type="text" class="form-control" id="exampleInputPassword1" name="description">
-            </div>
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="inputGroupFile02"  name="filePath" required>
-              <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Upload file</button>
-            </div>
-          </form>   
-  <br>
-          <table class="table">
-  
-            <tr>
-              <th scope="col" style="font-size:20px;">File summitted:</th>
-              <th>Date</th>
-              <th>Desciption</th>
-            </tr>
-  
+        <script src='https://cdn.tiny.cloud/1/2edbn6scbh2pwwfq1x8vxlafwfstk5zci4d7zsmpa09kp574/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+        </script>
+        <script>
+          tinymce.init({
+            selector: '#mytextarea'
+          });
+        </script>
+        
+        <div class="title-block">
+            <h3 class="title">
+                New Post <span class="sparkline bar" data-type="bar"></span>
+            </h3> </div>
+        <form name="item" method="post" action="/post/postnew" enctype="multipart/form-data">
+            
+                <div class="form-group row"> <label class="col-sm-2 form-control-label text-xs-right">
+                        Title:
+                    </label>
+                    <div class="col-sm-10"> <input type="text" name="title" class="form-control boxed" placeholder="" required> </div>
+                </div>
+                <div class="form-group row"> <label class="col-sm-2 form-control-label text-xs-right">
+                        Content:
+                    </label>
+                    <div class="col-sm-10">   
+                        <textarea name="content" id="mytextarea" class="form-control boxed"  cols="20" rows="10" ></textarea> 
+                    </div>
+                </div>
+
+           
+        
+            <div class="form-group row"> <label class="col-sm-2 form-control-label text-xs-right">
+                        ImageURL:
+                    </label>
+                    
+                    <div class="col-sm-10"> <input type="file" name="image" class="form-control boxed" placeholder="" > 
+                     {{#if errmess}}
+                <p style="color: red;">Please submit the file in PNG or JPEG format</p>
+              {{/if}} 
+              </div>
+                </div>
+        
+                <div class="form-group row">
+                    <div class="col-sm-10 col-sm-offset-2">
+                       
+                       <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button> </div>
+                </div>
           
-  
-                <% data.forEach(function(data) { %>
-                  <tr>
-              
-                      <td>
-                        <a href="/download/<%= data._id %>">
-                          <%= data.nameFile %>
-                        </a>
-                      </td>
-                      <td>
-                        <%= data.date %>
-
-                      </td>
-                      <td>
-                        <%= data.description %>
-                      </td>
-                  
-                  </tr>
-                  <% }); %>
-          </table>
-  
-        </div>
-      </div>
+        </form>
 		</div>
-
+    
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/main.js"></script>
+    
   </body>
 </html>
-      
-  
+

@@ -77,7 +77,7 @@ let checkLogin = async (req,res,next)=>{
         // let user = await checkEmail(req.body.email)
         .then(user=>{
             if(!user){
-                // var message= "Username or password is invalid"
+                var message= "Username or password is invalid"
                 res.redirect("/loginAgain") 
 
             }else{

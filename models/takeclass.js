@@ -21,8 +21,11 @@ var takeClassSchema= new mongoose.Schema({
     studentName :String,
     studentBirthday: String,
     studentAge :String,
-})
 
+},
+{
+    collection: 'takeClass'
+});
 var takeClassModel = mongoose.model('takeClass',takeClassSchema);
 
 module.exports = takeClassModel

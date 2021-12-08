@@ -5,11 +5,13 @@ let {checkAuth,checkAdmin } = require('../middleware/index')
 const { isEmail } = require('../middleware/index');
 
 const studentController = require('../controller/student.controller');
+studentRoute.post('/docreate',studentController.dotakeclass)
+
+studentRoute.get('/enrollment',studentController.enrollment)
+
 studentRoute.use(checkAuth);
 
-studentRoute.post('/docreate',studentController.dotakeclass)
 studentRoute.get('/doaddStudent:id',studentController.doaddStudent)
-studentRoute.get('/enrollment',studentController.enrollment)
 
 studentRoute.get('/deletetakeclass:id',studentController.deletetakeclass)
 

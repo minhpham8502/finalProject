@@ -16,7 +16,7 @@ class postController{
     };
     new(req,res){
     
-            return res.render('newPost.ejs');
+            return res.render('newPost.hbs');
     }
     edit(req,res){
             Post.findById({_id:req.params.id},function(err,post){
